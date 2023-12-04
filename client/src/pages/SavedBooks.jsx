@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
-import { DELETE_BOOK } from '../utils/mutations';
+import { REMOVE_BOOK } from '../utils/mutations';
 
 import {
   Container,
@@ -15,7 +15,7 @@ import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
   const {loading, data} = useQuery(QUERY_ME);
-  const [deleteBook, {deleteBookError, deleteBookData}] = useMutation(DELETE_BOOK);
+  const [deleteBook, {deleteBookError, deleteBookData}] = useMutation(REMOVE_BOOK);
   const userData = data?.me || {};
 
   const handleDeleteBook = async (bookId) => {
