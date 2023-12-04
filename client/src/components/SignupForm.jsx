@@ -17,7 +17,6 @@ const SignupForm = () => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
-  console.log(userFormData);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -36,7 +35,6 @@ const SignupForm = () => {
       Auth.login(data.createUser.token);
     } catch (err) {
       console.error(err);
-      console.log(error);
       setShowAlert(true);
     }
 

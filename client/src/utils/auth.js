@@ -12,12 +12,12 @@ class AuthService {
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
-    return token ? true : false; // handwaiving here
+    return !!token && !this.isTokenExpired(token); // handwaiving here
   }
 
   // check if token is expired
   isTokenExpired(token) {
-    const decodedToken = jwt.decode(token);
+    const decodedToken = decode(token); // Use decode here
 
     const currentTime = Math.floor(Date.now() / 1000);
 
