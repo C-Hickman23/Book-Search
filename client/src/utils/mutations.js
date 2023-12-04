@@ -12,7 +12,7 @@ mutation login($email: String!, $password: String!){
 }`;
 
 export const ADD_BOOK = gql `
-mutation saveBook($content: BookArrayInput!){
+mutation saveBook($content: BookInput!){
     saveBook(content: $content){
         savedBooks {
             authors
