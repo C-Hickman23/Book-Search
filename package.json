@@ -10,7 +10,7 @@
     "build": "cd client && npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cardon Hickman",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
