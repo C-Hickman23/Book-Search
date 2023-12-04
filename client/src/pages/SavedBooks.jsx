@@ -14,18 +14,9 @@ import Auth from '../utils/auth';
 import { deleteBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  // const [userData, setUserData] = useState({});
-  const [deleteBook, {err} ] = useMutation(DELETE_BOOK);
-  const {loading,data} = useQuery(QUERY_ME);
-  const userData = data?.me || {};
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const {loading, data} = useQuery(QUERY_ME);
+  const [deleteBook, {deleteBookError, deleteBookData}] = useMutation(DELETE_BOOK);
 
-  if (!token) {
-    return false;
-  }
-
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  //todo still not functional
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -34,9 +25,7 @@ const SavedBooks = () => {
     }
 
     try {
-      const { data } = await deleteBook({variables: {bookId},
-      })
-      deleteBookId(bookId)
+      const { data } = await deleteBook({variables: {bookId}})
     } catch (err) {
       console.error(err);
     }
