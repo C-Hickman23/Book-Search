@@ -8,8 +8,9 @@ const resolvers = {
                 _id: context.user._id,
             })
             .populate("savedBooks");
+
             return foundUser;
-        },
+        }
     },
     Mutation: {
         createUser: async (parent, {username, email, password}) => {
@@ -48,10 +49,10 @@ const resolvers = {
                 throw AuthenticationError;
             }
         },
-        deleteBook: async (parent, { bookId }, context) => {
+        deleteBook: async (parent, params, context) => {
             const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id},
-                { $pull: { savedBooks: { bookId } } },
+                { $pull: { savedBooks: { bookId: params.bookId } } },
                 { new: true }
             );
             if(!updatedUser){

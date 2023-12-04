@@ -11,13 +11,12 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { deleteBookId } from '../utils/localStorage';
+import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
   const {loading, data} = useQuery(QUERY_ME);
   const [deleteBook, {deleteBookError, deleteBookData}] = useMutation(DELETE_BOOK);
   const userData = data?.me || {};
-  console.log(data);
 
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -28,6 +27,7 @@ const SavedBooks = () => {
 
     try {
       const { data } = await deleteBook({variables: {bookId}})
+      removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }

@@ -39,9 +39,6 @@ mutation createUser($username: String!, $email: String!, $password: String!){
 export const DELETE_BOOK = gql`
 mutation deleteBook($bookId: String!){
     deleteBook(bookId: $bookId){
-        _id
-        username
-        email
         savedBooks{
             authors
             description
