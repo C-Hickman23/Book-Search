@@ -17,13 +17,12 @@ class AuthService {
 
   // check if token is expired
   isTokenExpired(token) {
-    const decodedToken = jwt.decode(token);
-
-    const currentTime = Math.floor(Date.now() / 1000);
-
-    if (decodedToken.exp < currentTime) {
-      return true;
-    } else {
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    } catch (err) {
       return false;
     }
   }
