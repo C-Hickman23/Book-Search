@@ -16,11 +16,8 @@ import { deleteBookId } from '../utils/localStorage';
 const SavedBooks = () => {
   const {loading, data} = useQuery(QUERY_ME);
   const [deleteBook, {deleteBookError, deleteBookData}] = useMutation(DELETE_BOOK);
-<<<<<<< HEAD
   const userData = data?.me || {};
   console.log(data);
-=======
->>>>>>> parent of 74f4bed (fixing misc errors)
 
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
