@@ -12,7 +12,7 @@
   - [Tests](#tests)
 
   ## Installation
-  no installation required deployed here: https://dashboard.heroku.com/apps/ch-book-search/logs
+  no installation required deployed [here](https://ch-book-search-2e82a49422dd.herokuapp.com)
 
   ## Usage
   Create a profile to use read list feature
